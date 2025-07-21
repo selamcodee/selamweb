@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Games | MySite</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .game-links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      margin: 40px auto;
+      max-width: 400px;
+    }
+
+    .game-links a {
+      display: block;
+      text-decoration: none;
+      padding: 15px 20px;
+      background: #2980b9;
+      color: white;
+      font-weight: bold;
+      border-radius: 8px;
+      box-shadow: 0 5px #1c5980;
+      transition: all 0.2s;
+    }
+
+    .game-links a:hover {
+      background: #3498db;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">MySite</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="games.html">Games</a></li>
+    </ul>
+    <button id="toggleTheme" class="toggle-btn">🌙</button>
+  </nav>
+
+  <main>
+    <h2>🎮 Game Center</h2>
+    <div class="game-links">
+      <a href="calculator.html">🧮 Calculator</a>
+      <a href="shell-game.html">🎩 Shell Game</a>
+      <a href="snake-game.html">🐍 Snake Game</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 MySite</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

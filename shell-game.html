@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Shell Game | MySite</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    #game {
+      margin: 40px auto;
+      position: relative;
+      width: 600px;
+      height: 300px;
+    }
+
+    .cup {
+      width: 100px;
+      height: 100px;
+      background: #bdc3c7;
+      border-radius: 50% 50% 0 0;
+      position: absolute;
+      bottom: 100px;
+      cursor: pointer;
+      transition: left 0.5s ease;
+    }
+
+    .coin {
+      width: 40px;
+      height: 40px;
+      background: gold;
+      border-radius: 50%;
+      position: absolute;
+      bottom: 100px;
+      display: none;
+    }
+
+    #message {
+      margin-top: 20px;
+      font-size: 24px;
+    }
+
+    #shuffleBtn {
+      margin-top: 30px;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      background: #27ae60;
+      border: none;
+      color: white;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">MySite</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="calculator.html">Calculator</a></li>
+      <li><a href="shell-game.html">Shell Game</a></li>
+      <li><a href="snake-game.html">Snake</a></li>
+    </ul>
+    <button id="toggleTheme" class="toggle-btn">🌙</button>
+  </nav>
+
+  <main>
+    <h2>Shell Game 🎩</h2>
+    <div id="game">
+      <div class="cup" id="cup0" style="left: 50px;"></div>
+      <div class="cup" id="cup1" style="left: 250px;"></div>
+      <div class="cup" id="cup2" style="left: 450px;"></div>
+      <div class="coin" id="coin"></div>
+    </div>
+    <div id="message"></div>
+    <button id="shuffleBtn">Shuffle Cups</button>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 MySite</p>
+  </footer>
+
+  <script>
+    const cups = document.querySelectorAll('.cup');
+    const coin = document.getElementById('coin');
+    const message = document.getElementById('message');
+    const shuffleBtn = document.getElementById('shuffleBtn');
+
+    let coinIndex = Math.floor(Math.random() * 3);
+    let positions = [50, 250, 450];
+    let isShuffling = false;
+
+    function resetGame() {
+      coin.style.display = 'none';
+      message.textContent = '';
+      coinIndex = Math.floor(Math.random() * 3);
+    }
+
+    function shuffleCups() {
+      if (isShuffling) return;
+      isShuffling = true;
+      resetGame();
+
+      let moves = 10;
+      const delay = 300;
+
+      const interval = setInterval(() => {
+        const [i, j] = getTwoRandomIndexes();
+        [positions[i], positions[j]] = [positions[j], positions[i]];
+
+        cups.forEach((cup, index) => {
+          cup.style.left = positions[index] + 'px';
+        });
+
+        if (--moves === 0) {
+          clearInterval(interval);
+          isShuffling = false;
+        }
+      }, delay);
+    }
+
+    function getTwoRandomIndexes() {
+      let i = Math.floor(Math.random() * 3);
+      let j;
+      do {
+        j = Math.floor(Math.random() * 3);
+      } while (i === j);
+      return [i, j];
+    }
+
+    cups.forEach((cup, index) => {
+      cup.addEventListener('click', () => {
+        if (isShuffling) return;
+
+        const coinPos = positions[coinIndex];
+        const clickedPos = parseInt(cup.style.left);
+
+        if (coinPos === clickedPos) {
+          message.textContent = "🎉 You found the coin!";
+        } else {
+          message.textContent = "😢 Wrong cup!";
+        }
+
+        coin.style.left = coinPos + 30 + 'px';
+        coin.style.display = 'block';
+      });
+    });
+
+    shuffleBtn.addEventListener('click', shuffleCups);
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>

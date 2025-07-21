@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Calculator | MySite</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .calculator {
+      max-width: 300px;
+      margin: 40px auto;
+      background: #ecf0f1;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .calculator input, .calculator button {
+      width: 100%;
+      font-size: 20px;
+      margin-bottom: 10px;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">MySite</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="calculator.html">Calculator</a></li>
+      <li><a href="shell-game.html">Shell Game</a></li>
+      <li><a href="snake-game.html">Snake</a></li>
+    </ul>
+    <button id="toggleTheme" class="toggle-btn">🌙</button>
+  </nav>
+
+  <main>
+    <h2>Simple Calculator</h2>
+    <div class="calculator">
+      <input type="text" id="calcDisplay" placeholder="0" readonly />
+      <button onclick="clearCalc()">C</button>
+      <button onclick="appendValue('+')">+</button>
+      <button onclick="appendValue('-')">-</button>
+      <button onclick="appendValue('*')">*</button>
+      <button onclick="appendValue('/')">/</button>
+      <button onclick="appendValue('1')">1</button>
+      <button onclick="appendValue('2')">2</button>
+      <button onclick="appendValue('3')">3</button>
+      <button onclick="appendValue('4')">4</button>
+      <button onclick="appendValue('5')">5</button>
+      <button onclick="appendValue('6')">6</button>
+      <button onclick="appendValue('7')">7</button>
+      <button onclick="appendValue('8')">8</button>
+      <button onclick="appendValue('9')">9</button>
+      <button onclick="appendValue('0')">0</button>
+      <button onclick="calculate()">=</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 MySite</p>
+  </footer>
+
+  <script>
+    const display = document.getElementById("calcDisplay");
+    function appendValue(val) {
+      display.value += val;
+    }
+    function clearCalc() {
+      display.value = "";
+    }
+    function calculate() {
+      try {
+        display.value = eval(display.value);
+      } catch {
+        display.value = "Error";
+      }
+    }
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

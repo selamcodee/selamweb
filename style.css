@@ -1,0 +1,176 @@
+/* Reset and base styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* Navbar */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3498db;
+  padding: 10px 20px;
+  color: white;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-links li a:hover {
+  text-decoration: underline;
+}
+
+/* Hero section */
+.hero {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #e0f7fa;
+}
+
+.hero h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #27ae60;
+}
+
+#greeting {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+/* Content section */
+.content {
+  padding: 30px 20px;
+}
+
+/* Footer */
+footer {
+  background-color: #222;
+  color: white;
+  padding: 15px 0;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 600px) {
+  .nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero h1 {
+    font-size: 1.5em;
+  }
+
+  button {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+/* 3D Animated Button */
+.btn-3d {
+  background: linear-gradient(145deg, #4CAF50, #388E3C);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 5px #2d6a2e;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-3d:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn-3d:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px #2d6a2e;
+}
+
+/* Contact Form */
+form {
+  max-width: 400px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+form input, form textarea {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Toggle button for dark mode */
+.toggle-btn {
+  margin-left: auto;
+  background: transparent;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+
+/* Dark mode support */
+body.dark {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark nav {
+  background-color: #1e1e1e;
+}
+
+body.dark .btn-3d {
+  background: linear-gradient(145deg, #2c3e50, #1a252f);
+  box-shadow: 0 5px #111;
+}
+
+body.dark .btn-3d:active {
+  box-shadow: 0 2px #000;
+}
